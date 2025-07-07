@@ -23,13 +23,13 @@ class TicketClassifier
 
             $prompt = <<<EOT
             Given the following ticket information, categorize the ticket, explain your reasoning, and provide a confidence score (0 to 1).
-            
+
             Subject: {$subject}
             Body: {$message}
-            
+
             Respond in JSON with keys: category, explanation, confidence.
             EOT;
-        
+
             $response = OpenAI::chat()->create([
                 'model' => 'gpt-3.5-turbo',
                 'messages' => [
@@ -40,12 +40,12 @@ class TicketClassifier
                 ],
                 'temperature' => 0.2,
             ]);
-    
+
             // Extract the content from the response
             $content = $response->choices[0]->message->content;
 
             Log::info('OpenAI response: ' . $content);
-    
+
             // Attempt to decode the JSON result
             $result = json_decode($content, true);
 

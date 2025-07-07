@@ -70,7 +70,7 @@ export default {
             }
           },
           scales: {
-            y: { 
+            y: {
                 beginAtZero: true ,
                 max: Math.max(...this.chartData) + 10
             }

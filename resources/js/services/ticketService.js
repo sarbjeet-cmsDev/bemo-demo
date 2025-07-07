@@ -41,6 +41,10 @@ export const ticketService = {
   getStats() {
     return api.get('/tickets/stats');
   },
+
+  getCategories(){
+    return api.get('/tickets/get-catagories');
+  }
 };
 
 export default ticketService;

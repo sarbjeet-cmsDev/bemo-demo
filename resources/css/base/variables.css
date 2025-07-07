@@ -2,8 +2,10 @@
 :root {
   /* Colors */
   --color-primary: #007bff;
+    --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   --color-primary-hover: #0056b3;
   --color-primary-light: #e3f2fd;
+    --stat-hover-bg: #f0f0f0; /* light mode hover */
 
   --color-secondary: #6c757d;
   --color-secondary-hover: #545b62;
@@ -26,8 +28,8 @@
   --color-info-light: #d1ecf1;
 
   /* Neutral Colors */
-  --color-black: #000;
-  --color-white: #fff;
+  --theme-color: #fff;
+  --theme-text-color: #000;
   --color-gray-100: #f8f9fa;
   --color-gray-200: #e9ecef;
   --color-gray-300: #dee2e6;
@@ -103,6 +105,9 @@
 [data-theme="dark"] {
   --color-primary: #66b2ff;
   --color-primary-hover: #3399ff;
+    --card-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
+  --card-border: 1px solid rgba(255, 255, 255, 0.1);
+
   --color-primary-light: #0d1b2a;
 
   --color-secondary: #adb5bd;
@@ -126,8 +131,9 @@
   --color-info-light: #113c45;
 
   /* Neutral Colors */
-  --color-black: #fff;
-  --color-white: #000;
+  --theme-color: #000;
+  --theme-text-color: #fff;
+ --stat-hover-bg: #2a2a2a; /* dark mode hover */
   --color-gray-100: #1a1a1a;
   --color-gray-200: #222;
   --color-gray-300: #333;

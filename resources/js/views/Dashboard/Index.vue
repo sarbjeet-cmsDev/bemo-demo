@@ -51,7 +51,7 @@ export default {
     async fetchStats() {
       const response = await statsService.getStats();
       this.stats = response;
-      
+
       this.statusChartData.labels = this.stats.tickets_by_status.map(item => item.status);
       this.statusChartData.data = this.stats.tickets_by_status.map(item => item.total);
 
@@ -78,13 +78,13 @@ export default {
   h1{
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: var(--theme-text-color);
     margin-bottom: 30px;
   }
   .stat-box{
-    background-color: #fff;
+    background-color: var( --theme-color);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--theme-text-color);
     padding: 20px;
     text-align: center;
     cursor: pointer;
@@ -93,10 +93,10 @@ export default {
   .stat-box h2{
     font-size: 1.2rem;
     font-weight: 600;
-    color: #333;
+    color: var(--theme-text-color);
     margin-bottom: 10px;
   }
   .stat-box:hover{
-    background-color: #f0f0f0;
+    background-color: var(--stat-hover-bg);
   }
 </style>

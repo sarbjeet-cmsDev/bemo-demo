@@ -22,8 +22,8 @@ html {
 
 /* Base Body Styles */
 body {
-  background-color: var(--color-gray-100);
-  color: var(--color-gray-900);
+  background-color: var( --theme-color);
+  color: var(--theme-text-color);
 }
 
 /* Typography Reset */
@@ -68,8 +68,3 @@ button {
   display: none !important;
 }
 
-/* Dark Mode Support via [data-theme="dark"] */
-[data-theme="dark"] body {
-  color: var(--color-gray-100, #f8f9fa);
-  background-color: var(--color-gray-900, #212529);
-}

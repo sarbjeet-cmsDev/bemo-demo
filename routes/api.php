@@ -7,6 +7,7 @@ use App\Http\Controllers\TicketController;
 Route::get('tickets/stats', [TicketController::class, 'stats']);
 Route::get('tickets/export-csv', [TicketController::class, 'exportCsv']);
 Route::post('tickets/{id}/classify', [TicketController::class, 'classify']);
+Route::get('tickets/get-catagories', [TicketController::class, 'GetCatagories']);
 Route::apiResource('tickets', TicketController::class);
 
 

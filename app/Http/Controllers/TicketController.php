@@ -137,6 +137,11 @@ class TicketController extends Controller
         ]);
     }
 
+    public function GetCatagories(){
+        $categories = Ticket::pluck('category')->unique()->values()->all();
+        return response()->json($categories);
+    }
+
     /**
      * Get statistics for dashboard charts.
      */
@@ -159,49 +164,72 @@ class TicketController extends Controller
     /**
      * Export tickets to CSV with search query.
      */
-    public function exportCsv(Request $request): JsonResponse
+      public function exportCsv(Request $request): JsonResponse
     {
-        // Fetch tickets based on search query
-        $query = Ticket::query();
+        try {
+            // Build query
+            $query = Ticket::query();
 
-        // Search functionality
-        if ($request->has('search') && $request->search) {
-            $search = $request->search;
-            $query->where(function ($q) use ($search) {
-                $q->where('subject', 'like', "%{$search}%")
-                  ->orWhere('body', 'like', "%{$search}%");
-            });
+            // Search filter
+            if ($request->filled('search')) {
+                $search = $request->search;
+                $query->where(function ($q) use ($search) {
+                    $q->where('subject', 'like', "%{$search}%")
+                      ->orWhere('body', 'like', "%{$search}%");
+                });
+            }
+
+            // Status filter
+            if ($request->filled('status')) {
+                $query->where('status', $request->status);
+            }
+
+            // Sort handling
+            $sortBy = $request->get('sort_by', 'created_at');
+            $sortOrder = $request->get('sort_order', 'desc');
+            $query->orderBy($sortBy, $sortOrder);
+
+            // Fetch tickets
+            $tickets = $query->get();
+
+            // Start CSV content with UTF-8 BOM
+            $csvContent = "\xEF\xBB\xBF"; // Excel-compatible UTF-8
+            $csvContent .= "Subject,Category,Status\n";
+
+            // Sanitize for CSV (e.g. prevent Excel formula injection)
+            $sanitize = function ($value) {
+                $value = str_replace('"', '""', $value); // escape quotes
+                if (preg_match('/^[=\+\-@]/', $value)) {
+                    $value = "'$value";
+                }
+                return $value;
+            };
+
+            // Loop through tickets
+            foreach ($tickets as $ticket) {
+                $subject = $sanitize($ticket->subject ?? '');
+                $category = $sanitize($ticket->category ?? '');
+                $status = $sanitize($ticket->status ?? '');
+                $csvContent .= "\"{$subject}\",\"{$category}\",\"{$status}\"\n";
+            }
+
+            // Save to disk
+            $fileName = 'tickets_' . time() . '.csv';
+            Storage::disk('public')->put($fileName, $csvContent);
+
+            // Generate public URL
+            $downloadUrl = Storage::disk('public')->url($fileName);
+
+            return response()->json([
+                'message' => 'CSV export generated successfully',
+                'download_url' => $downloadUrl
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to export CSV',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        // Filter by status
-        if ($request->has('status') && $request->status) {
-            $query->where('status', $request->status);
-        }
-
-
-        // Sort functionality
-        $sortBy = $request->get('sort_by', 'created_at');
-        $sortOrder = $request->get('sort_order', 'desc');
-        $query->orderBy($sortBy, $sortOrder);
-
-        $tickets = $query->get();
-
-        // Generate CSV content
-        $csvContent = "Subject,Category,Status\n";
-        foreach ($tickets as $ticket) {
-            $csvContent .= "\"{$ticket->subject}\",\"{$ticket->category}\",\"{$ticket->status}\"\n";
-        }
-
-        // Save the CSV content to a storage disk
-        $fileName = 'tickets_' . time() . '.csv';
-        Storage::disk('public')->put($fileName, $csvContent);
-
-        // Generate a download URL for the CSV file
-        $uniqueUrl = Storage::disk('public')->url($fileName);
-
-        return response()->json([
-            'message' => 'CSV export generated successfully',
-            'download_url' => $uniqueUrl
-        ]);
     }
 }

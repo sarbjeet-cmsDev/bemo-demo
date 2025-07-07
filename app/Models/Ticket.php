@@ -24,10 +24,10 @@ class Ticket extends Model
     ];
 
     protected $casts = [
-        'subject' => 'string',  
+        'subject' => 'string',
         'body' => 'string',
         'status' => 'string',
-        'note' => 'string', 
+        'note' => 'string',
         'category' => 'string',
         'confidence' => 'float',
         'explanation' => 'string',

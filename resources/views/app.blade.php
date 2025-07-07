@@ -7,36 +7,7 @@
     <title>Ticket Management System</title>
 
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            font-family: sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
 
-        body {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        html.dark body {
-            background-color: #121212;
-            color: #f1f1f1;
-        }
-
-        .toggle-button {
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-
-        html.dark .toggle-button {
-            background-color: #eee;
-            color: #111;
-        }
     </style>
 </head>
 <body>

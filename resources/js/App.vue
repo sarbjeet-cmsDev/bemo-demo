@@ -5,12 +5,9 @@
       <router-link to="/" class="nav__brand">Bemo</router-link>
       <div class="nav__menu">
         <div class="nav__item">
-          <router-link to="/" class="nav__link" :class="{ 'nav__link--active': $route.path === '/' }">
-            Home
-          </router-link>
         </div>
         <div class="nav__item">
-          <router-link to="/dashboard" class="nav__link" :class="{ 'nav__link--active': $route.path === '/dashboard' }">
+          <router-link to="/" class="nav__link" :class="{ 'nav__link--active': $route.path === '/' }">
             Dashboard
           </router-link>
         </div>
@@ -18,7 +15,7 @@
           <router-link to="/tickets" class="nav__link" :class="{ 'nav__link--active': $route.path === '/tickets' }">
             Tickets
           </router-link>
-                <ThemeToggle />
+        <ThemeToggle />
         </div>
       </div>
     </nav>
