@@ -61,8 +61,8 @@ Follow these steps to set up the project on your local machine:
 ## Assumptions & Trade-offs
 - Setup Authentication For Ticket SUbmission and Agent login
 - Real Time Email Notification as ticket status changed
-- 
-
+- Mobile Responsive
+- More Interactive UI/UX
 
 ## What I already did in term of code and scalablity
 - Global Axios CLient
