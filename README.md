@@ -46,7 +46,12 @@ Follow these steps to set up the project on your local machine:
    npm run dev
    ```
 
-9. **You’re all set!** Visit [http://localhost:8000](http://localhost:8000) to view the application locally, or your production URL after deployment.
+9. **Start the queue consumer**
+   ```bash
+   php artisan queue:work
+   ```
+
+10. **You’re all set!** Visit [http://localhost:8000](http://localhost:8000) to view the application locally, or your production URL after deployment.
 
 ---
 

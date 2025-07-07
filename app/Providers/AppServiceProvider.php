@@ -21,9 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-    RateLimiter::for('ticket-classifier', function () {
-        return Limit::perMinute(60); // Limit to 60 jobs per minute
-    });
-        //
+        RateLimiter::for('ticket-classifier', function () {
+            return Limit::perMinute(60); // Limit to 60 jobs per minute
+        });
     }
 }
