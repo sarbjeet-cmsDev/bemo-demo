@@ -7,6 +7,8 @@
   --color-primary-light: #e3f2fd;
     --stat-hover-bg: #f0f0f0; /* light mode hover */
 
+    --color-border: #000;
+
   --color-secondary: #6c757d;
   --color-secondary-hover: #545b62;
   --color-secondary-light: #f8f9fa;
@@ -109,6 +111,8 @@
   --card-border: 1px solid rgba(255, 255, 255, 0.1);
 
   --color-primary-light: #0d1b2a;
+
+  --color-border: #dfdfdf;
 
   --color-secondary: #adb5bd;
   --color-secondary-hover: #868e96;

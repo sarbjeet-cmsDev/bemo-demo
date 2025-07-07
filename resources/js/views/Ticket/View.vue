@@ -101,8 +101,10 @@ export default {
     async fetchCategories() {
       try {
         const response = await ticketService.getCategories();
-        this.categories = response.data || [];
-        this.filteredCategories = this.categories.slice();
+        if(response.data.length > 0) {
+          this.categories = response.data.filter(cat => cat !== null && cat !== undefined);
+          this.filteredCategories = this.categories.slice();
+        }
       } catch (error) {
         console.error('Error fetching categories:', error);
       }

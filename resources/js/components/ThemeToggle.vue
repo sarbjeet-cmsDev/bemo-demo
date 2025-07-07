@@ -3,30 +3,35 @@
     {{ isDark ? '🌙 Dark' : '☀️ Light' }}
   </button>
 </template>
-
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const isDark = ref(false)
-
-const setTheme = (dark) => {
-  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
-  isDark.value = dark
-  localStorage.setItem('theme', dark ? 'dark' : 'light')
-}
-
-const toggleTheme = () => {
-  setTheme(!isDark.value)
-}
-
-onMounted(() => {
-  const savedTheme = localStorage.getItem('theme')
-  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    setTheme(true)
-  } else {
-    setTheme(false)
+<script>
+export default {
+  props: {
+  },
+  data() {
+    return {
+      isDark: false,
+    }
+  },
+  methods: {
+    toggleTheme() {
+      this.isDark = !this.isDark;
+      this.setTheme(this.isDark);
+    },
+    setTheme(isdark) {
+      document.documentElement.setAttribute('data-theme', isdark ? 'dark' : 'light')
+      this.isDark = isdark
+      localStorage.setItem('theme', isdark ? 'dark' : 'light')
+    }
+  },
+  mounted() {
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      this.setTheme(true)
+    } else {
+      this.setTheme(false)
+    }
   }
-})
+};5
 </script>
 
 <style scoped>

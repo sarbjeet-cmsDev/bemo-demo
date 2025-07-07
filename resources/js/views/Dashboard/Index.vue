@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     this.fetchStats();
-  }
+  },
 };
 </script>
 <style scoped>
@@ -83,8 +83,8 @@ export default {
   }
   .stat-box{
     background-color: var( --theme-color);
+    border: 1px solid var(--color-border);
     border-radius: 8px;
-    box-shadow: 0 4px 8px var(--theme-text-color);
     padding: 20px;
     text-align: center;
     cursor: pointer;

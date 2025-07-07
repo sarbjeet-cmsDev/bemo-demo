@@ -42,47 +42,26 @@ Follow these steps to set up the project on your local machine:
 
 8. **Start the local development server**
    ```bash
-   composer run dev 
-   ```
----
-
-## Deployment
-
-To deploy the application to your server or production environment, follow these additional steps:
-
-1. **Set environment variables for production**
-   - Copy and edit your `.env` file as needed for your production credentials and settings.
-2. **Install dependencies (on the server)**
-   ```bash
-   composer install --no-dev --optimize-autoloader
-   npm install
-   npm run build
+   php artisan serve
+   npm run dev
    ```
 
-3. **Run migrations**
-   ```bash
-   php artisan migrate --force
-   ```
-
-4. **Cache configuration and routes**
-   ```bash
-   php artisan config:cache
-   php artisan route:cache
-   php artisan view:cache
-   ```
-
-5. **Start the server**
-   - Configure your web server (e.g., Nginx or Apache) to serve the `public` directory.
+9. **You’re all set!** Visit [http://localhost:8000](http://localhost:8000) to view the application locally, or your production URL after deployment.
 
 ---
 
-**You’re all set!** Visit [http://localhost:8000](http://localhost:8000) to view the application locally, or your production URL after deployment.
 
 
 
 ## Assumptions & Trade-offs
-- We can create a role-based authentication process.
-- We can implement real-time notifications for all events.
-- We can improve the user interface to work well on all platforms.
-- We can display a pie chart for ticket categories and a line chart for tickets over time.
-- We can make the entire system subscription-based.
+- Setup Authentication For Ticket SUbmission and Agent login
+- Real Time Email Notification as ticket status changed
+- 
+
+
+## What I already did in term of code and scalablity
+- Global Axios CLient
+- Global Alert System
+- Global Modal Component Or loader component
+- Pie Chart component
+- Global Css for Compoenets like form, modal

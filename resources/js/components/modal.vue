@@ -72,7 +72,7 @@ export default {
   height: 100%;
   overflow: hidden;
   outline: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--color-background);
 }
 
 .modal-dialog {
@@ -100,7 +100,11 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.modal-header h2{
+  color: var(--theme-text-color);
 }
 
 .modal-title {
