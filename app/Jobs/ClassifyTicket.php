@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\Middleware\RateLimited;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
@@ -16,12 +17,17 @@ class ClassifyTicket implements ShouldQueue
 
     public $ticket;
 
-    /**
-     * Create a new job instance.
-     */
     public function __construct(Ticket $ticket)
     {
         $this->ticket = $ticket;
+    }
+
+    /**
+     * Apply middleware to the job.
+     */
+    public function middleware(): array
+    {
+        return [new RateLimited('ticket-classifier')];
     }
 
     /**
@@ -29,9 +35,12 @@ class ClassifyTicket implements ShouldQueue
      */
     public function handle(): void
     {
-        try{
-            $classification = TicketClassifier::classify($this->ticket->subject, $this->ticket->body);
-        }catch(\Exception $e){
+        try {
+            $classification = TicketClassifier::classify(
+                $this->ticket->subject,
+                $this->ticket->body
+            );
+        } catch (\Exception $e) {
             $categories = ['Support', 'Bug', 'Feature Request', 'General'];
             $randomCategory = $categories[array_rand($categories)];
             $classification = [
@@ -40,10 +49,11 @@ class ClassifyTicket implements ShouldQueue
                 'confidence' => 0,
             ];
         }
-        if(!empty($this->ticket->category)){
+
+        if (!empty($this->ticket->category)) {
             unset($classification['category']);
         }
-        
+
         $this->ticket->update($classification);
     }
 }

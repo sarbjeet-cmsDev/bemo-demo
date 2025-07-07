@@ -3,6 +3,7 @@ import api from './api';
 export const ticketService = {
   // Get all tickets with optional filters
   getTickets(params = {}) {
+     console.log('Calling /tickets with:', params); // ✅ Now it's valid
     return api.get('/tickets', { params });
   },
 
@@ -42,4 +43,4 @@ export const ticketService = {
   },
 };
 
-export default ticketService; 
+export default ticketService;

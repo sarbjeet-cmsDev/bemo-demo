@@ -1,0 +1,75 @@
+/* ===============================
+   🌐 CSS Reset & Base Theme Setup
+   =============================== */
+
+/* Universal Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root Element */
+html {
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Body Styles */
+body {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-900);
+}
+
+/* Typography Reset */
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+/* Anchor Reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* List Reset */
+ul, ol {
+  list-style: none;
+}
+
+/* Media Elements */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form Elements */
+input, button, textarea, select {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+}
+
+/* Accessibility */
+[hidden] {
+  display: none !important;
+}
+
+/* Dark Mode Support via [data-theme="dark"] */
+[data-theme="dark"] body {
+  color: var(--color-gray-100, #f8f9fa);
+  background-color: var(--color-gray-900, #212529);
+}

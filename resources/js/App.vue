@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <nav class="nav container">
       <router-link to="/" class="nav__brand">Bemo</router-link>
@@ -17,6 +18,7 @@
           <router-link to="/tickets" class="nav__link" :class="{ 'nav__link--active': $route.path === '/tickets' }">
             Tickets
           </router-link>
+                <ThemeToggle />
         </div>
       </div>
     </nav>
@@ -38,3 +40,6 @@ nav.nav{
   margin-bottom: 20px;
 }
 </style>
+<script setup>
+import ThemeToggle from './components/ThemeToggle.vue'
+</script>
