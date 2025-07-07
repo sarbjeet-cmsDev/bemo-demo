@@ -1,0 +1,235 @@
+/* Badge Component - BEM */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  color: var(--color-white);
+  background-color: var(--color-gray-500);
+  border-radius: var(--border-radius-base);
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Badge Variants */
+.badge--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.badge--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.badge--success {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.badge--danger {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+
+.badge--warning {
+  background-color: var(--color-warning);
+  color: var(--color-gray-900);
+}
+
+.badge--info {
+  background-color: var(--color-info);
+  color: var(--color-white);
+}
+
+.badge--light {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-900);
+}
+
+.badge--dark {
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+}
+
+/* Badge Sizes */
+.badge--sm {
+  padding: 2px var(--spacing-xs);
+  font-size: 0.625rem;
+}
+
+.badge--lg {
+  padding: var(--spacing-sm) var(--spacing-base);
+  font-size: var(--font-size-sm);
+}
+
+/* Badge Shapes */
+.badge--pill {
+  border-radius: var(--border-radius-full);
+}
+
+.badge--square {
+  border-radius: 0;
+}
+
+/* Badge with Icon */
+.badge--with-icon {
+  gap: var(--spacing-xs);
+}
+
+.badge__icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Badge Dot */
+.badge--dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Alert Component - BEM */
+.alert {
+  position: relative;
+  padding: var(--spacing-base);
+  margin-bottom: var(--spacing-base);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--border-radius-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.alert--dismissible {
+  padding-right: var(--spacing-4xl);
+}
+
+.alert__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--spacing-base);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.alert__close:hover {
+  opacity: 1;
+}
+
+.alert__title {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+.alert__content {
+  margin: 0;
+}
+
+.alert__content:not(:last-child) {
+  margin-bottom: var(--spacing-sm);
+}
+
+.alert__actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+/* Alert Variants */
+.alert--primary {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+}
+
+.alert--secondary {
+  color: var(--color-secondary);
+  background-color: var(--color-secondary-light);
+  border-color: var(--color-secondary);
+}
+
+.alert--success {
+  color: var(--color-success);
+  background-color: var(--color-success-light);
+  border-color: var(--color-success);
+}
+
+.alert--danger {
+  color: var(--color-danger);
+  background-color: var(--color-danger-light);
+  border-color: var(--color-danger);
+}
+
+.alert--warning {
+  color: var(--color-warning-hover);
+  background-color: var(--color-warning-light);
+  border-color: var(--color-warning);
+}
+
+.alert--info {
+  color: var(--color-info);
+  background-color: var(--color-info-light);
+  border-color: var(--color-info);
+}
+
+/* Alert with Icon */
+.alert--with-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-base);
+}
+
+.alert__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+.alert__body {
+  flex: 1;
+}
+
+/* Spinner Component - BEM */
+.spinner {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-gray-200);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spinner-spin 0.8s linear infinite;
+}
+
+.spinner--sm {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-width: 1px;
+}
+
+.spinner--lg {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-width: 3px;
+}
+
+.spinner--xl {
+  width: 2rem;
+  height: 2rem;
+  border-width: 3px;
+}
+
+@keyframes spinner-spin {
+  to {
+    transform: rotate(360deg);
+  }
+} 
